@@ -1,5 +1,6 @@
 ---
-
+// Server Side Code Hidden to User
+const secrectAPIKey = import.meta.env.PUBLIC_WEATHER_API_KEY;
 ---
 
 <!-- Weather -->
@@ -8,14 +9,15 @@
       <h1>Weather</h1>
       <data value="" class="city">City</data>
       <data value="" class="temp">Temp</data>
-      <img src="https://via.placeholder.com/150" class="icon">
+      <img src="https://assets.codepen.io/16425/image-placeholder.png?width=200&height=200&format=auto" class="icon" />
     
 </section>
 
-<script lang="js">
+<script lang="js" define:vars={{ secrectAPIKey }}>
 
-// API key. Replace with your API key
-const APIKEY = 'de4e58686a4e1a8bbc47a32b076b0c58';
+// Set API key in `.env` file
+const APIKEY = secrectAPIKey;
+
 // City
 const city = 'Spokane';
 // Units for Farenheit
@@ -25,7 +27,6 @@ const units = 'imperial';
 const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=${units}`;
 
 // Get Elements
-const weatherContainer = document.querySelector('.weather');
 const theCity = document.querySelector('.city');
 const theTemp = document.querySelector('.temp');
 const theIcon = document.querySelector('.icon');
@@ -41,7 +42,7 @@ fetch(url)
   // Set Elements
   theCity.innerText = data.name;
   theTemp.innerText = data.main.temp;
-  theIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+  theIcon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
   
 });
 
