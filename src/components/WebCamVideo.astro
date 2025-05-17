@@ -1,5 +1,9 @@
-// Check-check: webcam.js file is loaded
-// console.log('Web Cam');
+---
+---
+
+<video autoplay poster="public/video-fallback-image.jpg"></video>
+
+<script lang="js">
 
 // Get Video
 const video = document.querySelector("video");
@@ -14,3 +18,5 @@ if (navigator.mediaDevices.getUserMedia) {
 	.then((stream) => (video.srcObject = stream))
 	.catch((error) => console.log(error));
 }
+
+</script>
